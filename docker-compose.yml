@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  test_jenkinsci:
+    image: ${DOCKER_REGISTRY-}testjenkinsci
+    build:
+      context: .
+      dockerfile: Dockerfile
