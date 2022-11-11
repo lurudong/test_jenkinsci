@@ -4,5 +4,6 @@ services:
   test_jenkinsci:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:80
     ports:
       - "9001:80"
