@@ -1,6 +1,3 @@
-docker build -t test_jenkinsci .
-docker run --name helloworldcontainer -p 9000:80 -d test_jenkinsci
-
 
 #!/bin/bash
 # 获取短版本号
@@ -40,6 +37,7 @@ y
 EOF
 docker build -t test_jenkinsci .
 docker run -d -p 5000:80 --name=test_jenkinsci test_jenkinsci
+
 3. Jenkins系统用户授权
 
 sudo usermod -a -G docker jenkins
