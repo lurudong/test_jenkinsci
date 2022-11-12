@@ -1,16 +1,30 @@
-# ÅäÖÃjenkins
+# Jenkinså®‰è£…
 
-### 1¡¢´´½¨Ò»¸öjenkinsÏîÄ¿
+å®‰è£…å…¶å®å¾ˆç®€å•ï¼Œå°±ä¸å¤šè¯´äº†ï¼Œè¯·çœ‹[è¿™ç¯‡æ–‡ç« ](https://www.jenkins.io/zh/doc/book/installing/)ï¼Œè‡ªè¡Œé€‰æ‹©å®‰è£…æ–¹å¼ 
 
-**ĞÂ½¨ÏîÄ¿**
+ä»¥ä¸Šæ˜¯ç®€å•dokcer å®‰è£…æ–¹å¼ï¼š
 
+```shell
+docker run  -u root -d -p 8081:8080 -p 50000:50000   -v jenkins-data:/var/jenkins_home  -v /var/run/docker.sock:/var/run/docker.sock   jenkinsci/blueocean
+```
 
+# é…ç½®jenkins
 
-# docker ÆÕÍ¨·½Ê½
+### 1ã€åˆ›å»ºä¸€ä¸ªjenkinsé¡¹ç›®
+
+**æ–°å»ºé¡¹ç›®**
+
+![æ–°å»ºé¡¹ç›®](.\images\image-20221112144045809.png)
+
+**æ„å»ºä¸€ä¸ªè‡ªç”±é£æ ¼çš„è½¯ä»¶é¡¹ç›®**
+
+![æ„å»ºä¸€ä¸ªè‡ªç”±é£æ ¼çš„è½¯ä»¶é¡¹ç›®](.\images\image-20221112150539.jpg)
+
+# docker æ™®é€šæ–¹å¼
 
 ```shell
 #!/bin/bash
-#»ñÈ¡¶Ì°æ±¾ºÅ
+#è·å–çŸ­ç‰ˆæœ¬å·
 GITHASH=`git rev-parse --short HEAD`
 docker stop test_jenkinsci
 docker rm test_jenkinsci
@@ -21,20 +35,20 @@ echo ---------------Launching Container...------------------
 docker run -d -p 5001:80 --name=test_jenkinsci test_jenkinsci:latest
 ```
 
-# °²×°docker-conpose
+# å®‰è£…docker-conpose
 
-ÒòÎªjenkinsĞèÒªÓÃµ½±¾µØµÄdocker-compose»·¾³£¬ËùÒÔ£¬°²×°ÍêÒÔÉÏ²½ÖèµÄjenkinsºó£¬Ê¹ÓÃ
+å› ä¸ºjenkinséœ€è¦ç”¨åˆ°æœ¬åœ°çš„docker-composeç¯å¢ƒï¼Œæ‰€ä»¥ï¼Œå®‰è£…å®Œä»¥ä¸Šæ­¥éª¤çš„jenkinsåï¼Œä½¿ç”¨
 
 ```bash
 docker exec -it jenkins /bin/bash
 ```
 
-½øÈë**ÈİÆ÷ÄÚ²¿**°²×°docker-compose£¬[°²×°²½ÖèÈ¥](https://github.com/yeasy/docker_practice/blob/master/compose/install.md)
+è¿›å…¥**å®¹å™¨å†…éƒ¨**å®‰è£…docker-composeï¼Œ[å®‰è£…æ­¥éª¤å»](https://github.com/yeasy/docker_practice/blob/master/compose/install.md)
 
-# Ê¾ÀıÆô¶¯½Å±¾£ºrun.bat
+# ç¤ºä¾‹å¯åŠ¨è„šæœ¬ï¼šrun.bat
 
 ```shell
-¸Ã½Å±¾ÓÃÓÚWindows ServerÖĞÀ­È¡×îĞÂ´úÂë²¢Æô¶¯.Net·şÎñ£¬¿ÉÒÔ½«½Å±¾Ìí¼Óµ½Windows¼Æ»®ÈÎÎñÖĞ½øĞĞ¶¨Ê±¸üĞÂ·şÎñ¡£
+è¯¥è„šæœ¬ç”¨äºWindows Serverä¸­æ‹‰å–æœ€æ–°ä»£ç å¹¶å¯åŠ¨.NetæœåŠ¡ï¼Œå¯ä»¥å°†è„šæœ¬æ·»åŠ åˆ°Windowsè®¡åˆ’ä»»åŠ¡ä¸­è¿›è¡Œå®šæ—¶æ›´æ–°æœåŠ¡ã€‚
 
 cd  ./test_jenkinsci
 git pull
@@ -42,7 +56,7 @@ cd  ./test_jenkinsci
 start dotnet run
 ```
 
-#   Jenkins¹¹½¨Ö´ĞĞshell
+#   Jenkinsæ„å»ºæ‰§è¡Œshell
 
 ```shell
  #!/bin/sh
@@ -69,13 +83,13 @@ docker run -d -p 5000:80 --name=test_jenkinsci test_jenkinsci
 
    
 
-# JenkinsÏµÍ³ÓÃ»§ÊÚÈ¨
+# Jenkinsç³»ç»Ÿç”¨æˆ·æˆæƒ
 
 ```
 sudo usermod -a -G docker jenkins
 ```
 
-# ÖØÆôJenkins
+# é‡å¯Jenkins
 
 ```
 systemctl restart jenkins
