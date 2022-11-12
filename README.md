@@ -84,13 +84,25 @@ docker run  -u root -d -p 8081:8080 -p 50000:50000   -v jenkins-data:/var/jenkin
 #!/bin/bash
 #获取短版本号
 GITHASH=`git rev-parse --short HEAD`
-docker stop test_jenkinsci
-docker rm test_jenkinsci
+echo ---------------clear Docker Image...------------------------
+clearImages=$(docker images test_jenkinsci  -q)
+if [ ! -n "$clearImages" ]; then
+  echo "No need to clean up images."
+else
+  docker stop test_jenkinsci
+  docker rm test_jenkinsci
+  docker rmi test_jenkinsci
+   echo "clear success."
+fi
+echo ---------------cleared Docker Image...------------------------
+
+
 echo ---------------Building Docker Image...------------------
-docker build -t test_jenkinsci:$GITHASH .
-docker tag test_jenkinsci:$GITHASH test_jenkinsci:latest
+docker build -t test_jenkinsci:latest .
+
 echo ---------------Launching Container...------------------
-docker run -d -p 5001:80 --name=test_jenkinsci test_jenkinsci:latest
+docker run -d -p 5001:80 --name=test_jenkinsci test_jenkinsci
+
 ```
 
 ## 安装docker-conpose
