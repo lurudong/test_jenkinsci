@@ -14,11 +14,11 @@ docker run  -u root -d -p 8081:8080 -p 50000:50000   -v jenkins-data:/var/jenkin
 
 **新建项目**
 
-![新建项目](.\images\image-20221112144045809.png)
+![新建项目](./images/image-20221112144045809.png)
 
 **构建一个自由风格的软件项目**
 
-![构建一个自由风格的软件项目](.\images\image-20221112150539.jpg)
+![构建一个自由风格的软件项目](./images/image-20221112150539.jpg)
 
 # docker 普通方式
 
