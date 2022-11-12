@@ -1,14 +1,16 @@
-# Jenkins安装
+# 使用Jenkins + Docker + Asp.net Core  部署
 
-安装其实很简单，就不多说了，请看[这篇文章](https://www.jenkins.io/zh/doc/book/installing/)，自行选择安装方式 
+## Jenkins安装
 
-以上是简单dokcer 安装方式：
+**安装其实很简单，就不多说了，请看[这篇文章](https://www.jenkins.io/zh/doc/book/installing/)，自行选择安装方式** 
+
+**以上是简单dokcer 安装方式：**
 
 ```shell
 docker run  -u root -d -p 8081:8080 -p 50000:50000   -v jenkins-data:/var/jenkins_home  -v /var/run/docker.sock:/var/run/docker.sock   jenkinsci/blueocean
 ```
 
-# 配置jenkins
+## 配置jenkins
 
 ### 1、创建一个jenkins项目
 
@@ -64,6 +66,10 @@ docker run  -u root -d -p 8081:8080 -p 50000:50000   -v jenkins-data:/var/jenkin
 
 ![构建任务](./images/image-20221112161640549.png)
 
+**构建成功，现在打开 [http://你的服务器ip:5001/swagger/index.html](http://xn--ip-0p3cl7jf7fo83a16x:5001)，可以看到**
+
+![image-20221112162936452](./images/image-20221112162936452.png)
+
 **当github有更新操作，会轮询构建**
 
 **该构建记录就是github变更后，由SCM变更产生**
@@ -72,7 +78,7 @@ docker run  -u root -d -p 8081:8080 -p 50000:50000   -v jenkins-data:/var/jenkin
 
 
 
-# docker 普通方式
+## docker 普通方式
 
 ```shell
 #!/bin/bash
@@ -87,17 +93,17 @@ echo ---------------Launching Container...------------------
 docker run -d -p 5001:80 --name=test_jenkinsci test_jenkinsci:latest
 ```
 
-# 安装docker-conpose
+## 安装docker-conpose
 
 因为jenkins需要用到本地的docker-compose环境，所以，安装完以上步骤的jenkins后，使用
 
-```bash
+```sh
 docker exec -it jenkins /bin/bash
 ```
 
 进入**容器内部**安装docker-compose，[安装步骤去](https://github.com/yeasy/docker_practice/blob/master/compose/install.md)
 
-# 示例启动脚本：run.bat
+## 示例启动脚本：run.bat
 
 ```shell
 该脚本用于Windows Server中拉取最新代码并启动.Net服务，可以将脚本添加到Windows计划任务中进行定时更新服务。
@@ -108,7 +114,7 @@ cd  ./test_jenkinsci
 start dotnet run
 ```
 
-# Jenkins构建执行shell
+## Jenkins构建执行shell
 
 ```shell
  #!/bin/sh
@@ -129,14 +135,14 @@ docker build -t test_jenkinsci .
 docker run -d -p 5000:80 --name=test_jenkinsci test_jenkinsci
 ```
 
-# Jenkins系统用户授权
+## Jenkins系统用户授权
 
-```
+```sh
 sudo usermod -a -G docker jenkins
 ```
 
-# 重启Jenkins
+## 重启Jenkins
 
-```
+```shell
 systemctl restart jenkins
 ```
