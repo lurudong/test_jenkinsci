@@ -158,3 +158,5 @@ sudo usermod -a -G docker jenkins
 ```shell
 systemctl restart jenkins
 ```
+
+https://blog.csdn.net/qq_20967969/article/details/122256722
